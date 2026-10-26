@@ -2,7 +2,7 @@ name: Build Android APK
 
 on:
   push:
-    branches: [ "main", "master" ] # main veya master branch'ine kod attığında çalışır
+    branches: [ "main", "master" ]
 
 jobs:
   build:
@@ -27,9 +27,8 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-      # Eğer proje Expo tabanlıysa prebuild yapılması gerekebilir:
-      # - name: Expo Prebuild
-      #   run: npx expo prebuild --platform android
+      - name: Expo Prebuild
+        run: npx expo prebuild --platform android --clean
 
       - name: Build APK (Gradle)
         run: |
