@@ -24,8 +24,10 @@ jobs:
           node-version: 18
           cache: 'npm'
 
-      - name: Install Dependencies
-        run: npm install
+      - name: Clean Install & Dependencies
+        run: |
+          rm -rf node_modules package-lock.json
+          npm install
 
       - name: Fix Expo Dependencies
         run: npx expo install --fix
